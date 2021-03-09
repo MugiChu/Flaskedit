@@ -1,1 +1,10 @@
 /venv/
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/csv-plugin.xml
+/.idea/FlaskEdit.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+
