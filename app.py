@@ -19,7 +19,7 @@ def predict():
         message = request.form['message']
         data = [message]
         my_prediction = clf.predict(data)
-    return render_template('result.html', prediction=my_prediction)
+    return render_template('result.html', prediction=( ", ".join( repr(e) for e in my_prediction ) ), name=message)
 
 
 if __name__ == '__main__':

@@ -16,12 +16,22 @@
 	</div>
 	</header>
     <div class="results">
-        <h2>Категория:</h2>
+        <h2>Таблица:</h2>
 
-
-        {{ prediction }}
-
-
+		<table class="table-fill">
+			<thead>
+			<tr>
+			<th class="text-left">Название</th>
+			<th class="text-left">Категория</th>
+			</tr>
+			</thead>
+			<tbody class="table-hover">
+			<tr>
+			<td class="text-left">{{ name }}</td>
+			<td class="text-left">{{ prediction }}</td>
+			</tr>
+		</tbody>
+	</table>
 	</div>
 
 </body>
