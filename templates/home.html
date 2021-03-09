@@ -3,7 +3,7 @@
 <head>
 	<title>Home</title>
 	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+	<link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 <body>
 
@@ -17,22 +17,12 @@
 	</div>
 	</header>
 
-	<div class="ml-container">
 
-		<form action="{{ url_for('predict')}}" method="POST">
-		<p>Введите наименование товара</p>
-		<!-- <input type="text" name="comment"/> -->
-		<textarea name="message" rows="6" cols="50"></textarea>
-		<br/>
-
-		<input type="submit" class="btn-info" value="определить">
-
+	<form class="form-wrapper" action="{{ url_for('predict')}}" method="POST">
+		<input type="text" id="search" name="message" placeholder="Введите наименование"
+		required>
+		<input type="submit" value="Predict" id="submit">
 	</form>
-
-	</div>
-
-
-
 
 </body>
 </html>
