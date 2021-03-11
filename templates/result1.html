@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Result</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			ML App
+		</div>
+		<h2>Категоризатор</h2>
+
+	</div>
+	</header>
+    <div class="results">
+        <h2>Таблица:</h2>
+
+		<table class="table-fill">
+			<thead>
+			<tr>
+			<th class="text-left">Название</th>
+			<th class="text-left">Категория</th>
+			</tr>
+			</thead>
+			<tbody class="table-hover">
+			<tr>
+			<td class="text-left">{{ name[0] }}</td>
+			<td class="text-left">{{ prediction[0] }}</td>
+			</tr>
+            <tr>
+                <td class="text-left">{{ name[1] }}</td>
+                <td class="text-left">{{ prediction[1] }}</td>
+            </tr>
+            <tr>
+                <td class="text-left">{{ name[2] }}</td>
+                <td class="text-left">{{ prediction[2] }}</td>
+            </tr>
+            <tr>
+                <td class="text-left">{{ name[3] }}</td>
+                <td class="text-left">{{ prediction[3] }}</td>
+            </tr>
+            <tr>
+                <td class="text-left">{{ name[4] }}</td>
+                <td class="text-left">{{ prediction[4] }}</td>
+            </tr>
+		</tbody>
+	</table>
+	</div>
+
+</body>
+</html>

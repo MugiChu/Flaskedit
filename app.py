@@ -36,9 +36,10 @@ def home():
         predicted = clf.predict(names)
         result = pd.DataFrame({'Наименование': names, 'Категория': predicted})
         result.to_csv('predicted.csv', index=False)
+        df1 = pd.read_csv('predicted.csv')
 
 
-        return('file uploaded')
+        return render_template('result1.html', prediction=df1['Категория'].head(5), name=df1['Наименование'].head(5))
     return render_template('home.html', form=form)
 
 
