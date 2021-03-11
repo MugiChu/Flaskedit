@@ -1,16 +1,43 @@
 from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, FileField
+from wtforms.validators import DataRequired
+from werkzeug.utils import secure_filename
 import pandas as pd
 import sklearn
 import pickle
+import os
 
 filename = 'classificate.pkl'
 clf = pickle.load(open(filename, 'rb'))
 app = Flask(__name__)
 
+app.config.update(dict(
+    SECRET_KEY="powerfull key",
+    WTF_CSRF_SECRET_KEY="mmm a csrf secret key"
+))
 
-@app.route('/')
+class MyForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired()])
+    dataset = FileField()
+
+@app.route('/', methods=('GET', 'POST'))
 def home():
-    return render_template('home.html')
+    form = MyForm()
+    if form.validate_on_submit():
+        f = form.dataset.data
+        filename = form.name.data +'.csv'
+        f.save(os.path.join(
+            filename
+        ))
+
+        return(str(form.name))
+    return render_template('home.html', form=form)
+
+
+@app.route('/avg/<nums>')
+def avg(nums):
+    return 'User %s' % nums
 
 
 @app.route('/predict', methods=['POST'])
