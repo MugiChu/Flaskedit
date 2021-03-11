@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from flask_wtf import FlaskForm
 from wtforms import StringField, FileField
 from wtforms.validators import DataRequired
@@ -37,10 +37,24 @@ def home():
         result = pd.DataFrame({'Наименование': names, 'Категория': predicted})
         result.to_csv('predicted.csv', index=False)
         df1 = pd.read_csv('predicted.csv')
-
-
+        
         return render_template('result1.html', prediction=df1['Категория'].head(5), name=df1['Наименование'].head(5))
+
+
     return render_template('home.html', form=form)
+
+
+@app.route('/result1')
+def send():
+    try:
+        df3 = 'predicted.csv'
+        return send_file(
+            df3,
+            mimetype='text/csv',
+            attachment_filename=df3,
+            as_attachment=True)
+    except Exception as e:
+        return str(e)
 
 
 @app.route('/avg/<nums>')

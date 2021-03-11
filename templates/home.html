@@ -27,10 +27,17 @@
 
 	<form method="POST" action="/" enctype="multipart/form-data">
 		{{ form.hidden_tag() }}
-		{{ form.name.label }} {{ form.name(size=20) }}
-		{{ form.dataset.label }} {{ form.dataset(size=20) }}
-		<input type="submit" value="Go">
-	
+		<div id="brandname">
+			<h2>Наименование столбца со списком товаров</h2>
+		</div>
+		{{ form.name(size=20) }}
+		<div id="brandname">
+			<h2>Выберите CSV файл</h2>
+		</div>
+		{{ form.dataset(size=20) }}
+		<section class="container">
+		<button type="submit" data-hover="Классифицировать"><div>Нажми на меня</div></button></a>
+	</section>
 	</form>
 </body>
 </html>

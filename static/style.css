@@ -65,13 +65,13 @@ a {
 }
 
 .form-wrapper #submit {
-	background-color: #941073;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#eb89ca), to(#941073));
-	background-image: -webkit-linear-gradient(top, #eb89ca, #941073);
-	background-image: -moz-linear-gradient(top, #eb89ca, #941073);
-	background-image: -ms-linear-gradient(top, #eb89ca, #941073);
-	background-image: -o-linear-gradient(top, #eb89ca, #941073);
-	background-image: linear-gradient(top, #eb89ca, #941073);
+	background-color: #2b2a2b;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#4E5066), to(#2b2a2b));
+	background-image: -webkit-linear-gradient(top, #4E5066, #2b2a2b);
+	background-image: -moz-linear-gradient(top, #4E5066, #2b2a2b);
+	background-image: -ms-linear-gradient(top, #4E5066, #2b2a2b);
+	background-image: -o-linear-gradient(top, #4E5066, #2b2a2b);
+	background-image: linear-gradient(top, #4E5066, #2b2a2b);
 	border: 1px solid #00748f;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -92,13 +92,13 @@ a {
 
 .form-wrapper #submit:hover,
 .form-wrapper #submit:focus {
-	background-color: #eb89ca;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#941073), to(#eb89ca));
-	background-image: -webkit-linear-gradient(top, #941073, #eb89ca);
-	background-image: -moz-linear-gradient(top, #941073, #eb89ca);
-	background-image: -ms-linear-gradient(top, #941073, #eb89ca);
-	background-image: -o-linear-gradient(top, #941073, #eb89ca);
-	background-image: linear-gradient(top, #941073, #eb89ca);
+	background-color: #4E5066;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#2b2a2b), to(#4E5066));
+	background-image: -webkit-linear-gradient(top, #2b2a2b, #4E5066);
+	background-image: -moz-linear-gradient(top, #2b2a2b, #4E5066);
+	background-image: -ms-linear-gradient(top, #2b2a2b, #4E5066);
+	background-image: -o-linear-gradient(top, #2b2a2b, #4E5066);
+	background-image: linear-gradient(top, #2b2a2b, #4E5066);
 }
 
 .form-wrapper #submit:active {
@@ -224,4 +224,52 @@ a {
   td.text-right {
 	text-align: right;
   }
+
+  section.container{
+    min-width: 500px;
+    margin: 5% auto;
+    text-align: center;
+  }
+    a:hover{border-bottom: 1px solid #111;} 
+    h1{font-size: 2em; padding: 20px 0;}
+    p{
+      font-size: .75em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 20px 0;
+    }
+
+    button:hover{cursor: pointer}
+    button {
+      background: transparent; outline: none;
+      position: relative;
+      border: 2px solid #111;
+      padding: 15px 50px;
+      overflow: hidden;
+    }
+
+    /*button:before (attr data-hover)*/
+    button:hover:before{opacity: 1; transform: translate(0,0);}
+    button:before{
+      content: attr(data-hover);
+      position: absolute;
+      top: 1.1em; left: 0;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      font-size: .8em;
+      opacity: 0;
+      transform: translate(-100%,0);
+      transition: all .3s ease-in-out;
+    }
+      /*button div (button text before hover)*/
+      button:hover div{opacity: 0; transform: translate(100%,0)}
+      button div{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        font-size: .8em;
+        transition: all .3s ease-in-out;
+      }
   
