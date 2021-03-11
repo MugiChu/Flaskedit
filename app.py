@@ -26,12 +26,19 @@ def home():
     form = MyForm()
     if form.validate_on_submit():
         f = form.dataset.data
-        filename = form.name.data +'.csv'
-        f.save(os.path.join(
-            filename
-        ))
+        #filename = form.name.data +'.csv'
+        #f.save(os.path.join(
+        #   filename
+        #))
 
-        return(str(form.name))
+        df = pd.read_csv(f)
+        names = df[form.name.data]
+        predicted = clf.predict(names)
+        result = pd.DataFrame({'Наименование': names, 'Категория': predicted})
+        result.to_csv('predicted.csv', index=False)
+
+
+        return('file uploaded')
     return render_template('home.html', form=form)
 
 
