@@ -26,11 +26,6 @@ def home():
     form = MyForm()
     if form.validate_on_submit():
         f = form.dataset.data
-        #filename = form.name.data +'.csv'
-        #f.save(os.path.join(
-        #   filename
-        #))
-
         df = pd.read_csv(f)
         names = df[form.name.data]
         predicted = clf.predict(names)
