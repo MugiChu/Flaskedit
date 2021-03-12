@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, flash, redirect, url_for, jsonify
 from flask_wtf import FlaskForm
 from wtforms import StringField, FileField
 from wtforms.validators import DataRequired
@@ -69,6 +69,16 @@ def predict():
         data = [message]
         my_prediction = clf.predict(data)
     return render_template('result.html', prediction=( ", ".join( repr(e) for e in my_prediction ) ), name=message)
+
+@app.route('/predictjs', methods=['POST'])
+def predictjson():
+    if request.method == 'POST':
+        content = request.get_json()
+        param = content['text'].split(',')
+        param =[str(text) for text in param]
+        my_prediction1 = clf.predict(param)
+        pred = {'category': str(my_prediction1)}
+    return jsonify(pred)
 
 
 if __name__ == '__main__':
