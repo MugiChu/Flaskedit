@@ -8,7 +8,7 @@ import sklearn
 import pickle
 import os
 
-filename = 'classificate.pkl'
+filename = 'classificate1.pkl'
 clf = pickle.load(open(filename, 'rb'))
 app = Flask(__name__)
 
