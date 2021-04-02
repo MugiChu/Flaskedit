@@ -9,7 +9,7 @@ import pickle
 import os
 
 
-ml = 'clf3.pkl'
+ml = 'classificate3.pkl'
 clf = pickle.load(open(ml, 'rb'))
 UPLOAD_FOLDER = ''
 ALLOWED_EXTENSIONS = set(['txt', 'csv'])
