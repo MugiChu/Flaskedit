@@ -42,8 +42,8 @@ def predict_from_text(text):
     # Return result
     #category_logreg = prediction_logreg
     
-    #print("The predicted category using the SVM model is %s." %(category_logreg) )
-    #print("The conditional probability is: %a" %(prediction_logreg_proba.max()*100))
+    #print(category_logreg)
+    #print(prediction_logreg_proba.max()*100)
     
     if (prediction_logreg_proba.max()*100) <= 50:
         cate = 'Не могу определить категорию'
