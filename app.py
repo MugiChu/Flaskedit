@@ -33,6 +33,27 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
+def predict_from_text(text):
+    
+    # Predict using the input model
+    prediction_logreg = clf.predict([text])
+    prediction_logreg_proba = clf.predict_proba([text])
+    
+    # Return result
+    #category_logreg = prediction_logreg
+    
+    #print("The predicted category using the SVM model is %s." %(category_logreg) )
+    #print("The conditional probability is: %a" %(prediction_logreg_proba.max()*100))
+    
+    if (prediction_logreg_proba.max()*100) <= 50:
+        cate = 'Не могу определить категорию'
+    else:
+        cate = prediction_logreg
+
+        return cate
+    return cate
+
+
 @app.route('/', methods=('GET', 'POST'))
 def home():
     form = MyForm()
@@ -95,9 +116,10 @@ def send():
 def predict():
     if request.method == 'POST':
         message = request.form['message']
-        data = [message]
-        my_prediction = clf.predict(data)
-    return render_template('result.html', prediction=( ", ".join( repr(e) for e in my_prediction ) ), name=message)
+        data = message
+        data = data.lower()
+        my_prediction = predict_from_text(data)
+    return render_template('result.html', prediction=my_prediction, name=message)
 
 
 @app.route('/predictjs', methods=['GET','POST'])
@@ -106,7 +128,8 @@ def predictjson():
         content = request.get_json()
         param = content['text'].split(',')
         param =[str(text) for text in param]
-        my_prediction1 = clf.predict(param)
+        param = param.lower()
+        my_prediction1 = predict_from_text(param)
         pred = {'Название': str(param),
         'Категория': str(my_prediction1)}
     return jsonify(pred)
