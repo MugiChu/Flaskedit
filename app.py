@@ -127,8 +127,8 @@ def predictjson():
     if request.method == 'POST':
         content = request.get_json()
         param = content['text'].split(',')
-        param =[str(text) for text in param]
-        param = param.lower()
+        param = [str(text).lower() for text in param]
+        param = str(param).replace('[', '').replace(']', '')
         my_prediction1 = predict_from_text(param)
         pred = {'Название': str(param),
         'Категория': str(my_prediction1)}
